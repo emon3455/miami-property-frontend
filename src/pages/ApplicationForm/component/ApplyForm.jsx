@@ -95,7 +95,7 @@ const ApplyForm = () => {
   const convertProperty = (address) => {
     const add = address.toUpperCase();
     const trimmedAddress = add.split(",")[0].trim();
-    const convertedAddress = trimmedAddress.replace(/\d+(TH|RD|ND)/g, (match) =>
+    const convertedAddress = trimmedAddress.replace(/\d+(TH|RD|ND|ST)/g, (match) =>
       match.slice(0, -2)
     );
     return convertedAddress;
