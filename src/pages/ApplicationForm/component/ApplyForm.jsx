@@ -113,7 +113,7 @@ const ApplyForm = () => {
     }, {});
 
     try {
-      const response = await fetch("http://localhost:3000/findAddress", {
+      const response = await fetch("https://miami-property-backend.vercel.app/findAddress", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
