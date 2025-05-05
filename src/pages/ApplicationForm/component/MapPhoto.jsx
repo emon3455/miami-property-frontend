@@ -1,6 +1,8 @@
+import { googleMapsApiKey } from "../../../constant/baseURL";
+
 /* eslint-disable react/prop-types */
 const MapPhoto = ({ address, map }) => {
-    const googleMapsApiKey = "AIzaSyDV1I-VK7KrnnU78YxHp6qgmyw5CP0UwG0";
+    // const googleMapsApiKey = "AIzaSyDV1I-VK7KrnnU78YxHp6qgmyw5CP0UwG0";
 
     return (
         <div className="grid grid-cols-2 gap-4">

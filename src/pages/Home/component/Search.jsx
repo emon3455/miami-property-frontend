@@ -6,6 +6,7 @@ import image1 from "../../../assets/banner1.jpg";
 import image2 from "../../../assets/banner2.jpg";
 import image4 from "../../../assets/banner4.jpg";
 import { addressAction } from "../../../redux/features/address/address";
+import { googleMapsApiKey } from "../../../constant/baseURL";
 
 const libraries = ["places"];
 
@@ -24,7 +25,7 @@ const Search = () => {
   // Load Google Maps API
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyDV1I-VK7KrnnU78YxHp6qgmyw5CP0UwG0",
+    googleMapsApiKey: googleMapsApiKey,
     libraries,
   });
 

@@ -6,6 +6,8 @@ import { errorAlert, successAlert } from "../../../utils/allertFunction";
 import CButton from "../../../utils/CButton/CButton";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { googleMapsApiKey } from "../../../constant/baseURL";
+import { useFindMatchedAddressesMutation } from "../../../redux/features/address/addressApi";
 
 const libraries = ["places"];
 
@@ -28,9 +30,10 @@ const ApplyForm = () => {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyDV1I-VK7KrnnU78YxHp6qgmyw5CP0UwG0",
+    googleMapsApiKey: googleMapsApiKey,
     libraries,
   });
+  const [findMatchedAddresses] = useFindMatchedAddressesMutation();
 
   useEffect(() => {
     if (isLoaded) {
@@ -113,19 +116,14 @@ const ApplyForm = () => {
     }, {});
 
     try {
-      const response = await fetch("https://miami-property-backend.vercel.app/findAddress", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ address: updatedProperty }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const results = await response.json();
+      // const response = await fetch("https://miami-property-backend.vercel.app/findAddress", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ address: updatedProperty }),
+      // });
+      const results = await findMatchedAddresses(updatedProperty).unwrap();
 
       const matchedItemsData = results.reduce((acc, item, index) => {
         acc[`informationPhysicalAddress${index + 1}`] = item.matchedItem
